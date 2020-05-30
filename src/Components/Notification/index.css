@@ -1,0 +1,28 @@
+.notification-container {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    color: #fff;
+    background-color: #1976d2;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    width: 20rem;
+    height: auto;
+    border-radius: 4px;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-icon {
+    color: #fff;
+    padding: .3rem .5rem;
+    background-color: #1976d2;
+    align-self: flex-end;
+    border: none;
+    cursor: pointer;
+}
+
+.close-icon:focus {
+    outline: none;
+}

@@ -1,0 +1,29 @@
+.claims-section-container {
+    padding: 2rem;
+}
+
+.new-claim-btn-container {
+    width: 20%;
+    padding: 0 1rem;
+}
+
+.bck-to-claim-bnt {
+    width: 20%;
+}
+
+.form-container {
+    padding: 0 1rem;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.claim-form {
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 6px;
+    padding: 3rem;
+}
+
+.new-claim-text {
+    text-align: center;
+}

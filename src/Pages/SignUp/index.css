@@ -1,0 +1,22 @@
+.sign-up-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    margin: 5rem auto;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.sign-in-link {
+    align-self: flex-end;
+}
+
+.sign-up-text {
+    padding: 1.2rem 0;
+    font-size: 2rem;
+}

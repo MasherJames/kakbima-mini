@@ -1,0 +1,34 @@
+.sign-in-main {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100%
+}
+
+.sign-in-bg-img {
+    max-width: calc(100% * 7/12);
+    flex: 0 1 calc(100% * 7/12);
+    background-size: cover;
+    background-image: url(../../Assets/Img/shot-by-cerqueira-NpF9JLGYfeQ-unsplash.jpg);
+}
+
+.sign-in-container {
+    max-width: calc(100% * 5/12);
+    flex: 0 1 calc(100% * 5/12);
+}
+
+.sign-in-form-container {
+    margin: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-in-form {
+    width: 100%;
+}
+
+.sign-in-text {
+    padding: 1.2rem 0;
+    font-size: 2rem;
+}

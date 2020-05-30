@@ -1,0 +1,51 @@
+.input-container {
+    position: relative;
+}
+
+.full-input-container {
+    max-width: 100%;
+    flex: 0 1 100%;
+}
+
+.half-input-container {
+    max-width: 50%;
+    flex: 0 1 50%;
+}
+
+.half-input-container:nth-child(1) {
+    padding-right: 0.4rem !important;
+}
+
+.half-input-container:nth-child(2) {
+    padding-left: 0.4rem !important;
+}
+
+.half-input-container,
+.full-input-container {
+    padding: 0.8rem 0;
+}
+
+.input {
+    width: 100%;
+    padding: 1.2rem 1rem;
+    font-size: 1rem;
+}
+
+.input-container .input:focus-within {
+    border-color: rgb(43, 43, 43);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input-labels {
+    z-index: 453654;
+    position: absolute;
+    transform: translate(14px, 20px) scale(1);
+    transition: all 0.5s;
+}
+
+.label-move-up {
+    transform: translate(-8px, -19px) scale(0.75)
+}
