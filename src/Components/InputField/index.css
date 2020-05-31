@@ -31,6 +31,11 @@
     font-size: 1rem;
 }
 
+.select-input {
+    overflow: visible!important;
+    z-index: 2;
+}
+
 .input-container .input:focus-within {
     border-color: rgb(43, 43, 43);
 }
@@ -44,6 +49,7 @@
     position: absolute;
     transform: translate(14px, 20px) scale(1);
     transition: all 0.5s;
+    z-index: 1;
 }
 
 .label-move-up {

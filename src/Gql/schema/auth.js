@@ -1,21 +1,28 @@
 import gql from "graphql-tag";
 
+const USER_FIELDS = gql`
+  fragment UserFields on User {
+    id
+    firstName
+    lastname
+    email
+    phoneNumber
+    createdAt
+    updatedAt
+  }
+`;
+
 const SIGN_UP_MUTATION = gql`
   mutation registerUser($input: UserInput!) {
     registerUser(input: $input) {
       success
       message
       user {
-        id
-        firstName
-        lastname
-        email
-        phoneNumber
-        createdAt
-        updatedAt
+        ...UserFields
       }
     }
   }
+  ${USER_FIELDS}
 `;
 
 const SIGN_IN_MUTATION = gql`
@@ -25,30 +32,20 @@ const SIGN_IN_MUTATION = gql`
       message
       token
       user {
-        id
-        firstName
-        lastname
-        email
-        phoneNumber
-        createdAt
-        updatedAt
+        ...UserFields
       }
     }
   }
+  ${USER_FIELDS}
 `;
 
 const GET_SINGLE_USER = gql`
   query getUser($id: ID!) {
     getUser(id: $id) {
-      id
-      firstName
-      lastname
-      email
-      phoneNumber
-      createdAt
-      updatedAt
+      ...UserFields
     }
   }
+  ${USER_FIELDS}
 `;
 
 const IS_USER_LOGGED_IN = gql`

@@ -6,6 +6,7 @@ import DashboardHome from "./DashboardHome";
 import Policies from "./Policies";
 import Claims from "./Claims";
 import Notification from "./Notification";
+import Loader from "./Loader";
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   Policies,
   Claims,
   Notification,
+  Loader,
 };

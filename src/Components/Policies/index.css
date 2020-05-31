@@ -49,9 +49,7 @@
     /* At the bottom of the tooltip */
     left: 50%;
     margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.54) transparent transparent transparent;
+    border: 5px solid rgba(0, 0, 0, 0.54) transparent transparent transparent;
 }
 
 .edit-delete-btn:hover .tooltip-text {
