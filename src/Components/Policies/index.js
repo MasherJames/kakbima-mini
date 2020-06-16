@@ -8,7 +8,7 @@ import Eye from "../../Assets/Icons/eye.svg";
 
 import { useFetch } from "../../Utils";
 import { PolicyGql } from "../../Gql";
-import { Button, Notification, Loader } from "..";
+import { Button, Notification, Loader, Tooltip } from "..";
 
 import "./index.css";
 
@@ -52,7 +52,7 @@ const Policies = () => {
     <section className="policy-section-container">
       {error && (
         <Notification
-          message={error}
+          message={error.message}
           closeSideNotification={closeSideNotification}
         />
       )}
@@ -108,42 +108,53 @@ const Policies = () => {
                       </tr>
                     </thead>
                     <tbody className="data-table-body">
-                      {data.getAllPolicies.map((policy, index) => (
-                        <tr className="data-table-row body-row" key={index}>
-                          <td className="data-table-content table-content-body">
-                            {policy.id}
-                          </td>
-                          <td className="data-table-content table-content-body">
-                            {policy.name}
-                          </td>
-                          <td className="data-table-content table-content-body">
-                            {policy.identifier}
-                          </td>
-                          <td className="data-table-content table-content-body">
-                            {policy.premium}
-                          </td>
-                          <td className="data-table-content table-content-body">
-                            {policy.startDate}
-                          </td>
-                          <td className="data-table-content table-content-body">
-                            {policy.endDate}
-                          </td>
-                          <td className="data-table-content table-content-body">
-                            <button className="edit-delete-btn" type="button">
-                              <img src={Eye} alt="view" />
-                              <span className="tooltip-text">View</span>
-                            </button>
-                            <button className="edit-delete-btn" type="button">
-                              <img src={Edit} alt="edit" />
-                              <span className="tooltip-text">Edit</span>
-                            </button>
-                            <button className="edit-delete-btn" type="button">
-                              <img src={Delete} alt="delete" />
-                              <span className="tooltip-text">Delete</span>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                      {((data && data.getAllPolicies) || []).map(
+                        (policy, index) => (
+                          <tr className="data-table-row body-row" key={index}>
+                            <td className="data-table-content table-content-body">
+                              {policy.id}
+                            </td>
+                            <td className="data-table-content table-content-body">
+                              {policy.name}
+                            </td>
+                            <td className="data-table-content table-content-body">
+                              {policy.identifier}
+                            </td>
+                            <td className="data-table-content table-content-body">
+                              {policy.premium}
+                            </td>
+                            <td className="data-table-content table-content-body">
+                              {policy.startDate}
+                            </td>
+                            <td className="data-table-content table-content-body">
+                              {policy.endDate}
+                            </td>
+                            <td className="data-table-content table-content-body">
+                              <button
+                                className="edit-delete-btn tlp"
+                                type="button"
+                              >
+                                <img src={Eye} alt="view" />
+                                <Tooltip message="View" />
+                              </button>
+                              <button
+                                className="edit-delete-btn tlp"
+                                type="button"
+                              >
+                                <img src={Edit} alt="edit" />
+                                <Tooltip message="Edit" />
+                              </button>
+                              <button
+                                className="edit-delete-btn tlp"
+                                type="button"
+                              >
+                                <img src={Delete} alt="delete" />
+                                <Tooltip message="Delete" />
+                              </button>
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 )}

@@ -7,6 +7,7 @@ import Policies from "./Policies";
 import Claims from "./Claims";
 import Notification from "./Notification";
 import Loader from "./Loader";
+import Tooltip from "./Tooltip";
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Claims,
   Notification,
   Loader,
+  Tooltip,
 };
