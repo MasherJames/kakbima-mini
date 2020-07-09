@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
+import DatePicker from "react-date-picker";
+import ModernDatePicker from "react-modern-calendar-datepicker";
 
 import { PolicyGql } from "../../Gql";
 import { useForm } from "../../Utils";
@@ -135,13 +137,29 @@ const CreateOrEditPolicy = ({ setShowPolicies, setShowNewOrEdit }) => {
           size="full"
           labelText="Policy Name"
         />
-        <InputField
+        <DatePicker
+          className="input-container juuu full-input-container"
+          onChange={(e) => {
+            console.log(e);
+          }}
+          value={inputValues.startDate}
+        />
+        {/*<InputField
           type="date"
           name="startDate"
           value={inputValues.startDate}
           onChange={handleChange}
           size="full"
           labelText="Start Date"
+        />*/}
+        <ModernDatePicker
+          inputClassName="input-container juuu full-input-container"
+          // value={selectedDay}
+          onChange={(e) => {
+            console.log(e);
+          }}
+          // renderInput={InputField} // render a custom input
+          // shouldHighlightWeekends
         />
         <InputField
           type="date"
