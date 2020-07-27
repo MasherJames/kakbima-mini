@@ -1,17 +1,44 @@
 import React from "react";
-import { ApolloClient } from "apollo-client";
-import { ApolloLink } from "apollo-link";
-import { createHttpLink } from "apollo-link-http";
-import { onError } from "apollo-link-error";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { setContext } from "apollo-link-context";
-import { ApolloProvider } from "@apollo/react-hooks";
+import {
+  ApolloClient,
+  ApolloProvider,
+  HttpLink,
+  InMemoryCache,
+  ApolloLink,
+  from,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 
 import { typeDefs } from "./Gql";
 import Routes from "./routes";
 
 // initialize the cache
 const cache = new InMemoryCache();
+// Initialize link
+const httpLink = new HttpLink({
+  uri: "https://kakbima-mini.herokuapp.com/graphql",
+});
+
+/*
+Apollo Link - customize the flow of data between Client and server.
+Request Handler
+  Operation - object with an operation passed through the link
+  Forward - function for executing the next link in a chain except the terminating link
+  Terminating link - last link in a composed chain, send req to the server and returns an ExecutionResult
+ */
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // get the authentication token from local storage if it exists
+  // and sets an Authorization header to each req with the token,
+  const token = localStorage.getItem("AUTH_TOKEN");
+
+  // return context to be sent with the current req
+  operation.setContext(({ headers = {} }) => ({
+    ...headers,
+    authorization: token ? token : "",
+  }));
+
+  return forward(operation);
+});
 
 // handle server errors, network errors, and GraphQL errors
 // log in dev, send to a logger service i.e sentry in prod
@@ -26,23 +53,7 @@ const erroLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const httpLink = createHttpLink({
-  uri: "https://kakbima-mini.herokuapp.com/graphql",
-});
-
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem("AUTH_TOKEN");
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? token : "",
-    },
-  };
-});
-
-const link = ApolloLink.from([erroLink, authLink, httpLink]);
+const link = from([erroLink, authMiddleware, httpLink]);
 // Create an instance of apollo client with the initialized cache and link
 const client = new ApolloClient({
   cache,
