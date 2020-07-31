@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "@reach/router";
+import { Link, useHistory } from "react-router-dom";
 import { AuthGql } from "../../Gql";
 import {
   Button,
@@ -17,7 +17,7 @@ const SignUp = () => {
   // error state
   const [error, setError] = useState("");
   // instantiate the navigation hook
-  const navigate = useNavigate();
+  const history = useHistory();
 
   // Form initial state
   const initialState = {
@@ -43,7 +43,7 @@ const SignUp = () => {
   // function to be executed on success
   const handleOnSuccess = (data) => {
     // redirect to sign in
-    navigate("/signin", { replace: true });
+    history.push("/signin");
   };
 
   // close side bar function by setting error to nul

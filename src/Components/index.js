@@ -8,6 +8,7 @@ import Claims from "./Claims";
 import Notification from "./Notification";
 import Loader from "./Loader";
 import Tooltip from "./Tooltip";
+import NoMatch from "./NoMatch";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   Notification,
   Loader,
   Tooltip,
+  NoMatch,
 };

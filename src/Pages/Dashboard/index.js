@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "@reach/router";
+import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 
-import { Footer } from "../../Components";
+import { Footer, DashboardHome, Policies, Claims } from "../../Components";
 import Activity from "../../Assets/Icons/activity.svg";
 import Dashboard from "../../Assets/Icons/align-justify.svg";
 import Claim from "../../Assets/Icons/alert-octagon.svg";
@@ -11,7 +11,10 @@ import User from "../../Assets/Icons/user.svg";
 
 import "./index.css";
 
-const DashBoard = ({ children }) => {
+const DashBoard = () => {
+  // Relative links and path
+  const { path, url } = useRouteMatch();
+
   return (
     <main className="dashboard-main">
       <header className="root-header-container">
@@ -49,7 +52,7 @@ const DashBoard = ({ children }) => {
         <article className="side-panel-opts-container">
           <ul className="side-panel-opts">
             <li>
-              <Link className="side-panel-links-sub" to="/dashboard">
+              <Link to={`${url}dashboard`} className="side-panel-links-sub">
                 <img
                   className="side-panel-img-sub"
                   src={Dashboard}
@@ -59,13 +62,13 @@ const DashBoard = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link className="side-panel-links-sub" to="/policies">
+              <Link to={`${url}policies`} className="side-panel-links-sub">
                 <img className="side-panel-img-sub" src={Policy} alt="policy" />
                 Policies
               </Link>
             </li>
             <li>
-              <Link className="side-panel-links-sub" to="/claims">
+              <Link to={`${url}claims`} className="side-panel-links-sub">
                 <img className="side-panel-img-sub" src={Claim} alt="claim" />
                 Claims
               </Link>
@@ -76,7 +79,11 @@ const DashBoard = ({ children }) => {
       </section>
       <section className="root-main-content">
         <div className="dummy-div"></div>
-        {children}
+        <Switch>
+          <Route path={`${path}dashboard`} component={DashboardHome} />
+          <Route path={`${path}policies`} component={Policies} />
+          <Route path={`${path}claims`} component={Claims} />
+        </Switch>
       </section>
       <Footer />
     </main>
