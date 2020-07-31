@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import { gql } from "@apollo/client";
 
 const USER_FIELDS = gql`
   fragment UserFields on User {
@@ -50,7 +50,7 @@ const GET_SINGLE_USER = gql`
 
 const IS_USER_LOGGED_IN = gql`
   query IsUserLoggedIn {
-    isLoggedIn @client(always: true)
+    isLoggedIn @client
   }
 `;
 

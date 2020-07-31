@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "@reach/router";
+import { Link, useHistory } from "react-router-dom";
 
+import { isLoggedInVariable } from "../../Apollo";
 import { AuthGql } from "../../Gql";
 import useMutation from "../../Utils/CustomHooks/Services/useMutation";
 import useForm from "../../Utils/CustomHooks/useForm";
@@ -17,8 +18,8 @@ const SignIn = () => {
   // error state
   const [error, setError] = useState("");
 
-  // instantiate the navigation hook
-  const navigate = useNavigate();
+  // instantiate the history hook
+  const history = useHistory();
 
   // Form initial state
   const initialState = {
@@ -39,13 +40,13 @@ const SignIn = () => {
   };
 
   // function to be executed on success
-  const handleOnSuccess = (data) => {
+  const handleOnSuccess = ({ login }) => {
     // store the token to local storage
-    localStorage.setItem("AUTH_TOKEN", data.login.token);
+    localStorage.setItem("AUTH_TOKEN", login.token);
+    // set login to true
+    isLoggedInVariable(true);
     // redirect to sign in
-    if (localStorage.getItem("AUTH_TOKEN")) {
-      navigate("/dashboard", { replace: true });
-    }
+    history.push("/dashboard");
   };
 
   // close side bar function by setting error to nul

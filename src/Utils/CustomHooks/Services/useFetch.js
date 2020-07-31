@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 const useFetch = (QUERY, handleOnError, handleOnSuccess) => {
   const { data, loading, error } = useQuery(QUERY, {
@@ -8,7 +8,6 @@ const useFetch = (QUERY, handleOnError, handleOnSuccess) => {
     },
     onCompleted: (data) => {
       handleOnSuccess(data);
-      console.log(data);
     },
   });
 
