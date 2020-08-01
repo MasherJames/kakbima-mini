@@ -8,8 +8,7 @@ import {
   Footer,
   Notification,
 } from "../../Components";
-import useMutation from "../../Utils/CustomHooks/Services/useMutation";
-import useForm from "../../Utils/CustomHooks/useForm";
+import { useForm, useMutation } from "../../Utils";
 import Lock from "../../Assets/Icons/lock.svg";
 import "./index.css";
 
@@ -29,10 +28,12 @@ const SignUp = () => {
   };
 
   // Form custom hook that handles on-change and on-submit
-  const { handleChange, handleSubmit, inputValues } = useForm(
-    signUpNewUser,
-    initialState
-  );
+  const {
+    handleChange,
+    handlePhoneChange,
+    handleSubmit,
+    inputValues,
+  } = useForm(signUpNewUser, initialState);
 
   // function to be executed on error
   const handleOnError = (error) => {
@@ -83,6 +84,7 @@ const SignUp = () => {
           }}
         >
           <InputField
+            normal={true}
             type="text"
             name="firstName"
             value={inputValues.firstName}
@@ -91,6 +93,7 @@ const SignUp = () => {
             labelText="First Name"
           />
           <InputField
+            normal={true}
             type="text"
             name="lastName"
             value={inputValues.lastName}
@@ -99,14 +102,16 @@ const SignUp = () => {
             labelText="Last name"
           />
           <InputField
-            type="text"
+            type="phone"
             name="phoneNumber"
             value={inputValues.phoneNumber}
-            onChange={handleChange}
+            onChange={handlePhoneChange}
             size="full"
             labelText="Phone Number"
+            phone={true}
           />
           <InputField
+            normal={true}
             type="text"
             name="email"
             value={inputValues.email}
@@ -115,6 +120,7 @@ const SignUp = () => {
             labelText="Email"
           />
           <InputField
+            normal={true}
             type="password"
             name="password"
             value={inputValues.password}

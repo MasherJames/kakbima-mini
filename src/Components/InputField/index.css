@@ -55,3 +55,7 @@
 .label-move-up {
     transform: translate(-8px, -19px) scale(0.75)
 }
+
+.w-100 {
+    width: 100%;
+}

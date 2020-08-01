@@ -12,6 +12,7 @@
         "react": "^16.13.1",
         "react-date-picker": "^8.0.1",
         "react-dom": "^16.13.1",
+        "react-intl-tel-input": "^8.0.4",
         "react-loading-skeleton": "^2.0.1",
         "react-modern-calendar-datepicker": "^3.1.6",
         "react-router-dom": "^5.2.0",

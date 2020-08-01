@@ -43,7 +43,7 @@ const PublicRoutes = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={() => (isLoggedIn ? <Redirect to="/dashboard" /> : <Component />)}
+      render={() => (isLoggedIn ? <Redirect to="/" /> : <Component />)}
     />
   );
 };

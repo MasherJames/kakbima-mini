@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import DatePicker from "react-date-picker";
-import ModernDatePicker from "react-modern-calendar-datepicker";
 
 import { PolicyGql } from "../../Gql";
 import { useForm } from "../../Utils";
@@ -130,6 +128,7 @@ const CreateOrEditPolicy = ({ setShowPolicies, setShowNewOrEdit }) => {
       >
         <h1 className="new-claim-text">Add a New Policy</h1>
         <InputField
+          normal={true}
           type="text"
           name="name"
           value={inputValues.name}
@@ -137,31 +136,19 @@ const CreateOrEditPolicy = ({ setShowPolicies, setShowNewOrEdit }) => {
           size="full"
           labelText="Policy Name"
         />
-        <DatePicker
-          className="input-container juuu full-input-container"
-          onChange={(e) => {
-            console.log(e);
-          }}
-          value={inputValues.startDate}
-        />
-        {/*<InputField
+
+        <InputField
+          normal={true}
           type="date"
           name="startDate"
           value={inputValues.startDate}
           onChange={handleChange}
           size="full"
           labelText="Start Date"
-        />*/}
-        <ModernDatePicker
-          inputClassName="input-container juuu full-input-container"
-          // value={selectedDay}
-          onChange={(e) => {
-            console.log(e);
-          }}
-          // renderInput={InputField} // render a custom input
-          // shouldHighlightWeekends
         />
+
         <InputField
+          normal={true}
           type="date"
           name="endDate"
           value={inputValues.endDate}
@@ -179,6 +166,7 @@ const CreateOrEditPolicy = ({ setShowPolicies, setShowNewOrEdit }) => {
           select={true}
         />
         <InputField
+          normal={true}
           type="number"
           name="premium"
           value={inputValues.premium}
@@ -187,6 +175,7 @@ const CreateOrEditPolicy = ({ setShowPolicies, setShowNewOrEdit }) => {
           labelText="Total Premium"
         />
         <InputField
+          normal={true}
           type="text"
           name="identifier"
           value={inputValues.identifier}

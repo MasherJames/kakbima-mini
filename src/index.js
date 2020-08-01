@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import "react-intl-tel-input/dist/main.css";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";

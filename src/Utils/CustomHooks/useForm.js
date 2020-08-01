@@ -10,6 +10,13 @@ const useForm = (callbackFromApollo, initialState = {}) => {
     });
   };
 
+  const handlePhoneChange = (_, value) => {
+    setInputValues({
+      ...inputValues,
+      phoneNumber: value,
+    });
+  };
+
   const handleSelectChange = (e) => {
     const selectedInputs =
       e &&
@@ -39,6 +46,7 @@ const useForm = (callbackFromApollo, initialState = {}) => {
     handleSelectChange,
     handleSubmit,
     inputValues,
+    handlePhoneChange,
   };
 };
 

@@ -46,7 +46,7 @@ const SignIn = () => {
     // set login to true
     isLoggedInVariable(true);
     // redirect to sign in
-    history.push("/dashboard");
+    history.push("/");
   };
 
   // close side bar function by setting error to nul
@@ -87,6 +87,7 @@ const SignIn = () => {
             }}
           >
             <InputField
+              normal={true}
               type="text"
               name="email"
               value={inputValues.email}
@@ -95,6 +96,7 @@ const SignIn = () => {
               labelText="Email"
             />
             <InputField
+              normal={true}
               type="password"
               name="password"
               value={inputValues.password}

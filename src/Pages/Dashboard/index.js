@@ -12,7 +12,6 @@ import User from "../../Assets/Icons/user.svg";
 import "./index.css";
 
 const DashBoard = () => {
-  // Relative links and path
   const { path, url } = useRouteMatch();
 
   return (
@@ -44,7 +43,7 @@ const DashBoard = () => {
       </header>
       <section className="side-panel-container">
         <article className="side-panel-home-link-container">
-          <Link className="side-panel-links" to="/dashboard">
+          <Link className="side-panel-links" to={url}>
             <img className="side-panel-img" src={Activity} alt="act" />
             Kakbima mini
           </Link>
@@ -52,7 +51,7 @@ const DashBoard = () => {
         <article className="side-panel-opts-container">
           <ul className="side-panel-opts">
             <li>
-              <Link to={`${url}dashboard`} className="side-panel-links-sub">
+              <Link to={url} className="side-panel-links-sub">
                 <img
                   className="side-panel-img-sub"
                   src={Dashboard}
@@ -80,9 +79,9 @@ const DashBoard = () => {
       <section className="root-main-content">
         <div className="dummy-div"></div>
         <Switch>
-          <Route path={`${path}dashboard`} component={DashboardHome} />
-          <Route path={`${path}policies`} component={Policies} />
-          <Route path={`${path}claims`} component={Claims} />
+          <Route exact path={url} component={DashboardHome} />
+          <Route exact path={`${path}policies`} component={Policies} />
+          <Route exact path={`${path}claims`} component={Claims} />
         </Switch>
       </section>
       <Footer />

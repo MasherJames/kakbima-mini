@@ -1,5 +1,6 @@
 import React from "react";
-import { handleFocus, handleBlur } from "../../Utils";
+import IntlTelInput from "react-intl-tel-input";
+import { handleFocus, handleBlur, geoIpLookUp } from "../../Utils";
 import Select from "react-select";
 import "./index.css";
 
@@ -10,7 +11,9 @@ const InputField = ({
   labelText,
   value,
   onChange,
+  normal = false,
   select = false,
+  phone = false,
 }) => {
   return (
     <div
@@ -18,7 +21,20 @@ const InputField = ({
         size === "full" ? "full-input-container" : "half-input-container"
       } ${select ? "select-input" : ""}`}
     >
-      {select ? (
+      {phone && (
+        <IntlTelInput
+          inputClassName="input"
+          fieldName={name}
+          fieldId={name}
+          defaultCountry="auto"
+          geoIpLookup={geoIpLookUp}
+          nationalMode={false}
+          autoHideDialCode={false}
+          onPhoneNumberChange={onChange}
+        />
+      )}
+
+      {select && (
         <Select
           placeholder="Select benefit ..."
           name={name}
@@ -30,7 +46,9 @@ const InputField = ({
             { label: "Another Party", isClaimed: false, value: 2 },
           ]}
         />
-      ) : (
+      )}
+
+      {normal && (
         <>
           {" "}
           <label className="input-labels" htmlFor={name}>
