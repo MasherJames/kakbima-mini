@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { Footer, DashboardHome, Policies, Claims } from "../../Components";
 import Activity from "../../Assets/Icons/activity.svg";
@@ -12,13 +13,18 @@ import User from "../../Assets/Icons/user.svg";
 import "./index.css";
 
 const DashBoard = () => {
+  const { t, i18n } = useTranslation();
   const { path, url } = useRouteMatch();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <main className="dashboard-main">
       <header className="root-header-container">
         <div className="root-header">
-          <h1 className="root-heading">Dashboard</h1>
+          <h1 className="root-heading">{t("dashboard", "Hello there")}</h1>
           <div className="heading-icons-container">
             <button
               className="heading-icons"
@@ -35,6 +41,8 @@ const DashBoard = () => {
               <img src={User} alt="user" />
               <ul className="header-drop-down" id="user-drop-down">
                 <li>Profile</li>
+                <li onClick={() => changeLanguage("de")}>de</li>
+                <li onClick={() => changeLanguage("en")}>en</li>
                 <li>Logout</li>
               </ul>
             </button>
