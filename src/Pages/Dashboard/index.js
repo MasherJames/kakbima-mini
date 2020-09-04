@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 
 import { Footer, DashboardHome, Policies, Claims } from "../../Components";
+import { useOnOutsideClick } from "../../Utils";
 import Activity from "../../Assets/Icons/activity.svg";
 import Dashboard from "../../Assets/Icons/align-justify.svg";
 import Claim from "../../Assets/Icons/alert-octagon.svg";
@@ -14,6 +15,26 @@ import "./index.css";
 const DashBoard = () => {
   const { path, url } = useRouteMatch();
 
+  const {
+    ref: userInfoRef,
+    showDropDown: showUserInfoDropDown,
+    setShowDropDown: setShowUserInfoDropDown,
+  } = useOnOutsideClick();
+
+  const {
+    ref: notificationRef,
+    showDropDown: showNotificationDropDown,
+    setShowDropDown: setShowNotificationDropDown,
+  } = useOnOutsideClick();
+
+  const userInfoClick = () => {
+    setShowUserInfoDropDown((prevState) => !prevState);
+  };
+
+  const notificationsClick = () => {
+    setShowNotificationDropDown((prevState) => !prevState);
+  };
+
   return (
     <main className="dashboard-main">
       <header className="root-header-container">
@@ -23,17 +44,34 @@ const DashBoard = () => {
             <button
               className="heading-icons"
               id="notifications-drop-down-container"
+              ref={notificationRef}
+              onClick={notificationsClick}
             >
               <img src={Notification} alt="Notification" />
               <span className="notifications-counter">20</span>
-              <ul className="header-drop-down" id="notifications-drop-down">
+              <ul
+                className={`header-drop-down ${
+                  showNotificationDropDown ? "d-flex" : ""
+                }`}
+                id="notifications-drop-down"
+              >
                 <li>James requested a claim</li>
                 <li>James added a new policy</li>
               </ul>
             </button>
-            <button className="heading-icons" id="user-drop-down-container">
+            <button
+              className="heading-icons"
+              id="user-drop-down-container"
+              ref={userInfoRef}
+              onClick={userInfoClick}
+            >
               <img src={User} alt="user" />
-              <ul className="header-drop-down" id="user-drop-down">
+              <ul
+                className={`header-drop-down ${
+                  showUserInfoDropDown ? "d-flex" : ""
+                }`}
+                id="user-drop-down"
+              >
                 <li>Profile</li>
                 <li>Logout</li>
               </ul>

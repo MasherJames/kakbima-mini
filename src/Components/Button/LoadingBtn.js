@@ -5,7 +5,7 @@ const LoadingButton = () => {
   return (
     <div className="btn-container">
       <button className="btn" type="submit">
-        <div className="loader"></div>
+        <div className="loader">Loading ...</div>
       </button>
     </div>
   );

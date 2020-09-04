@@ -22,16 +22,19 @@ const InputField = ({
       } ${select ? "select-input" : ""}`}
     >
       {phone && (
-        <IntlTelInput
-          inputClassName="input"
-          fieldName={name}
-          fieldId={name}
-          defaultCountry="auto"
-          geoIpLookup={geoIpLookUp}
-          nationalMode={false}
-          autoHideDialCode={false}
-          onPhoneNumberChange={onChange}
-        />
+        <>
+          <label htmlFor={name}>{labelText}</label>
+          <IntlTelInput
+            inputClassName="input"
+            fieldName={name}
+            fieldId={name}
+            defaultCountry="auto"
+            geoIpLookup={geoIpLookUp}
+            nationalMode={false}
+            autoHideDialCode={false}
+            onPhoneNumberChange={onChange}
+          />
+        </>
       )}
 
       {select && (
