@@ -103,11 +103,7 @@
     border-radius: 5px;
 }
 
-#notifications-drop-down-container:hover #notifications-drop-down {
-    display: flex;
-}
-
-#user-drop-down-container:hover #user-drop-down {
+.d-flex {
     display: flex;
 }
 

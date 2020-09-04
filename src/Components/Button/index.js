@@ -6,7 +6,7 @@ const defaultFunc = () => {
   return;
 };
 
-const Button = ({ type, text, click = defaultFunc }) => {
+const Button = ({ type, text, click = defaultFunc, disabled = false }) => {
   // handle onclick if passed
   const handleClick = (e) => {
     if (type === "button") {
@@ -15,11 +15,14 @@ const Button = ({ type, text, click = defaultFunc }) => {
   };
 
   return (
-    <div className="btn-container">
-      <button className="btn" type={type} onClick={handleClick}>
-        {text}
-      </button>
-    </div>
+    <button
+      className="btn"
+      type={type}
+      onClick={handleClick}
+      disabled={disabled}
+    >
+      {text}
+    </button>
   );
 };
 

@@ -107,7 +107,14 @@ const SignIn = () => {
             {loading ? (
               <LoadingButton />
             ) : (
-              <Button text="SIGN IN" type="submit" />
+              <Button
+                text="SIGN IN"
+                type="submit"
+                disabled={
+                  inputValues.email.length === 0 &&
+                  inputValues.password.length === 0
+                }
+              />
             )}
           </form>
           <Link className="sign-in-link" to="/signup">
